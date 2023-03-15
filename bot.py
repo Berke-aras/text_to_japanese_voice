@@ -121,6 +121,5 @@ async def s(ctx): # waiting for message here
             await ctx.send(f"**{ctx.author}**, Ses oynatma hatası!!, Tekrar dene")
         return
 
-#client.run("ODMyNjU1MTY4NDQwMjM4MTMx.Gn5p7V.Db_hpVcSPKiz8I7AvQS6VXMZXoxnGa3g_lVLXM")
+client.run("Token")
 
-client.run("MTAxNDI5NDYxNjY2NjgwODQyMA.G_JOR-.yxEBRYIoRRfLShFyG6lp2Hs4W3qDGo3FxjzkPo")
