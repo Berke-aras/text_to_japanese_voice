@@ -1,3 +1,4 @@
 # text_to_japanese_voice
 
-Discord botudur
+bot.py Discord botudur
+spek.py Kendi bilgisayarında çalışıp sesi verir
