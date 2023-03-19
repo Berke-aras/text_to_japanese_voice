@@ -2,3 +2,5 @@
 
 bot.py Discord botudur
 spek.py Kendi bilgisayarında çalışıp sesi verir
+
+Gereklilikler: ...
