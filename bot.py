@@ -9,7 +9,7 @@ from deep_translator import (GoogleTranslator)
 import time
 import asyncio
 from mutagen.mp3 import MP3
-#sesin çalismasi icin "pip install PyNaCl" komutunu kullan
+#sesin çalismasi icin "pip install PyNaCl" komutunu kullan, youtubedl kullan
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix=["!!"], intents=intents)
