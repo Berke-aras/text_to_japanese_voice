@@ -9,7 +9,8 @@ from deep_translator import (GoogleTranslator)
 import time
 import asyncio
 from mutagen.mp3 import MP3
-#sesin çalismasi icin "pip install PyNaCl" komutunu kullan, youtubedl kullan
+import asyncio 
+#sesin çalismasi icin "pip install PyNaCl" komutunu kullan
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix=["!!"], intents=intents)
@@ -24,10 +25,9 @@ async def slash_command(int: discord.Interaction):
     await int.response.send_message("command")
 
 
-import asyncio # To get the exception
 
 @client.command(name="s")
-async def s(ctx): # waiting for message here
+async def s(ctx): 
     await ctx.send(f"**{ctx.author}**, İstediğini yazmak için 15 saniye süren var")
 
     def check(m: discord.Message):  # m = discord.Message.
@@ -89,7 +89,7 @@ async def s(ctx): # waiting for message here
     except:
         print("devam") 
     
-    
+    time.sleep(0.01)
     channel = ctx.message.author.voice.channel
     if not channel:
         await ctx.send("Herhangi Bir ses kanalında değilsin!")
@@ -98,14 +98,23 @@ async def s(ctx): # waiting for message here
         if voice and voice.is_connected():
             await voice.move_to(channel)
         else:
-            voice = await channel.connect()
             try:
+                voice = await channel.connect()
                 try:
-                    voice.play(FFmpegPCMAudio("ses.mp3"))
+                    try:
+                        voice.play(FFmpegPCMAudio("ses.mp3"))
+                    except:
+                        voice.play(FFmpegPCMAudio("ses.wav"))
                 except:
-                    voice.play(FFmpegPCMAudio("ses.wav"))
+                        await ctx.send(f"**{ctx.author}**, Hata!!, Tekrar dene") 
             except:
-                    await ctx.send(f"**{ctx.author}**, Hata!!, Tekrar dene") 
+                try:
+                    try:
+                        voice.play(FFmpegPCMAudio("ses.mp3"))
+                    except:
+                        voice.play(FFmpegPCMAudio("ses.wav"))
+                except:
+                        await ctx.send(f"**{ctx.author}**, Hata!!, Tekrar dene") 
         
         
         await ctx.send(f"**{ctx.author}**,\n Ses_dosyası:{links} ")
@@ -121,5 +130,5 @@ async def s(ctx): # waiting for message here
             await ctx.send(f"**{ctx.author}**, Ses oynatma hatası!!, Tekrar dene")
         return
 
-client.run("Token")
 
+client.run("")
